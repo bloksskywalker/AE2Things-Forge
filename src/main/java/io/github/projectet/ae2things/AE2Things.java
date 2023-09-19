@@ -124,6 +124,15 @@ public class AE2Things {
 
         ADVANCED_INSCRIBER.get().setBlockEntity(BEAdvancedInscriber.class, ADVANCED_INSCRIBER_BE.get(), null, null);
         CRYSTAL_GROWTH.get().setBlockEntity(BECrystalGrowth.class, CRYSTAL_GROWTH_BE.get(), null, null);
+
+        event.enqueueWork(() -> {
+            var disksText = "text.ae2things.disk_drives";
+
+            for(var cell : AETItems.DISK_DRIVES) {
+                Upgrades.add(AEItems.FUZZY_CARD, cell.get(), 1, disksText);
+                Upgrades.add(AEItems.INVERTER_CARD, cell.get(), 1, disksText);
+            }  
+        });
     }
 
     public static void worldTick(TickEvent.WorldTickEvent event) {
